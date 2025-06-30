@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Casio Calculator</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #2b2b2b;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .calculator {
+      background: #3a3a3a;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      width: 320px;
+      padding: 20px;
+    }
+
+    .display {
+      background: #1a1a1a;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      text-align: right;
+      color: #0f0;
+    }
+
+    .history {
+      font-size: 0.85em;
+      color: #999;
+    }
+
+    .result {
+      font-size: 2em;
+      font-weight: bold;
+    }
+
+    .buttons {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    button {
+      padding: 20px;
+      font-size: 1.4em;
+      border: none;
+      border-radius: 10px;
+      background: #dcdcdc;
+      box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.15);
+      color: #000;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    button:hover {
+      background: #c6c6c6;
+    }
+
+    .operator {
+      background: #f4b400; /* Casio yellow */
+      color: #000;
+    }
+
+    .clear {
+      background: #ff4b4b; /* Casio red */
+      color: #fff;
+      grid-column: span 2;
+    }
+
+    .equals {
+      background: #0088cc; /* Casio-style blue */
+      color: #fff;
+      grid-column: span 2;
+    }
+
+    .zero {
+      grid-column: span 2;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <div class="display">
+      <div id="history" class="history"></div>
+      <div id="result" class="result">0</div>
+    </div>
+    <div class="buttons">
+      <button class="clear" onclick="clearDisplay()">C</button>
+      <button onclick="appendDecimal()">.</button>
+      <button class="operator" onclick="appendOperator('/')">÷</button>
+
+      <button onclick="appendNumber('7')">7</button>
+      <button onclick="appendNumber('8')">8</button>
+      <button onclick="appendNumber('9')">9</button>
+      <button class="operator" onclick="appendOperator('*')">×</button>
+
+      <button onclick="appendNumber('4')">4</button>
+      <button onclick="appendNumber('5')">5</button>
+      <button onclick="appendNumber('6')">6</button>
+      <button class="operator" onclick="appendOperator('-')">−</button>
+
+      <button onclick="appendNumber('1')">1</button>
+      <button onclick="appendNumber('2')">2</button>
+      <button onclick="appendNumber('3')">3</button>
+      <button class="operator" onclick="appendOperator('+')">+</button>
+
+      <button class="zero" onclick="appendNumber('0')">0</button>
+      <button class="equals" onclick="calculate()">=</button>
+    </div>
+  </div>
+
+  <script>
+    let currentInput = '';
+    let history = '';
+
+    function appendNumber(number) {
+      currentInput += number;
+      updateDisplay();
+    }
+
+    function appendOperator(operator) {
+      if (currentInput === '') return;
+      const lastChar = currentInput.slice(-1);
+      if (['+', '-', '*', '/'].includes(lastChar)) {
+        currentInput = currentInput.slice(0, -1) + operator;
+      } else {
+        currentInput += operator;
+      }
+      updateDisplay();
+    }
+
+    function appendDecimal() {
+      const lastNumber = currentInput.split(/[\+\-\*\/]/).pop();
+      if (!lastNumber.includes('.')) {
+        currentInput += '.';
+        updateDisplay();
+      }
+    }
+
+    function clearDisplay() {
+      currentInput = '';
+      history = '';
+      updateDisplay();
+    }
+
+    function calculate() {
+      try {
+        const result = eval(currentInput);
+        history = currentInput + ' =';
+        currentInput = parseFloat(result).toFixed(2);
+        updateDisplay();
+      } catch {
+        currentInput = 'Error';
+        updateDisplay();
+      }
+    }
+
+    function updateDisplay() {
+      document.getElementById('result').innerText = currentInput || '0';
+      document.getElementById('history').innerText = history;
+    }
+  </script>
+</body>
+</html>
