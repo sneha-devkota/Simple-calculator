@@ -25,6 +25,14 @@ A responsive, and fully functional calculator inspired by the classic Casio layo
 
 ## How to Use
 
-1. Clone the repository or download the `.html` file:
+1. Clone the repository 
+git clone https://github.com/sneha-devkota/casio-calculator.git
+2. Navigate to the project folder
+cd casio-calculator
+3. Open the calculator
+  Just double-click the index.html file
+  OR right-click → Open with → Your browser (Chrome, Firefox, etc.)
+
+
 
 ```
