@@ -1,6 +1,6 @@
 ## Casio-Style Calculator
 
-A stylish, responsive, and fully functional calculator inspired by the classic Casio layout. Built with HTML, CSS, and JavaScript—all in a single file!
+A responsive, and fully functional calculator inspired by the classic Casio layout. Built with HTML, CSS, and JavaScript—all in a single file!
 
 
 ---
