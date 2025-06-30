@@ -1,12 +1,11 @@
-# 🧮 Casio-Style Calculator
+## Casio-Style Calculator
 
 A stylish, responsive, and fully functional calculator inspired by the classic Casio layout. Built with HTML, CSS, and JavaScript—all in a single file!
 
-![Screenshot](preview.png) <!-- Replace or remove if you don’t have a preview image -->
 
 ---
 
-## 🚀 Features
+##  Features
 
 - Basic arithmetic operations: `+`, `−`, `×`, `÷`
 - Decimal support
@@ -16,7 +15,7 @@ A stylish, responsive, and fully functional calculator inspired by the classic C
 
 ---
 
-## 🛠️ Built With
+##  Built With
 
 - HTML5
 - CSS3 (Custom Styling)
@@ -24,7 +23,7 @@ A stylish, responsive, and fully functional calculator inspired by the classic C
 
 ---
 
-## 📂 How to Use
+## How to Use
 
 1. Clone the repository or download the `.html` file:
 
